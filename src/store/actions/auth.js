@@ -1,4 +1,4 @@
-import { setUserToken, resetUser } from "./user";
+import { setUserToken, resetUser} from "./user";
 import { reqLogin, reqLogout } from "@/api/login";
 import { setToken, removeToken } from "@/utils/auth";
 export const login = (username, password) => (dispatch) => {
@@ -6,8 +6,8 @@ export const login = (username, password) => (dispatch) => {
     reqLogin({ username: username.trim(), password: password })
       .then((response) => {
         const { data } = response;
-        if (data.status === 0) {
-          const token = data.token;
+        if (data) {
+          const token = data.accessToken;
           dispatch(setUserToken(token));
           setToken(token);
           resolve(data);

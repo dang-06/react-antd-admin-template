@@ -6,8 +6,9 @@ export const getUserInfo = (token) => (dispatch) => {
     reqUserInfo(token)
       .then((response) => {
         const { data } = response;
-        if (data.status === 0) {
-          const userInfo = data.userInfo;
+        if (data) {
+          const userInfo = data;
+          console.log("userInfo"+ userInfo);
           dispatch(setUserInfo(userInfo));
           resolve(data);
         } else {

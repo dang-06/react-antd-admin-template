@@ -2,9 +2,9 @@ import request from '@/utils/request'
 
 export function reqUserInfo(data) {
   return request({
-    url: '/userInfo',
+    url: '/v1/user/user-by-token',
     method: 'post',
-    data
+    data: { token: data }
   })
 }
 
